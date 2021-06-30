@@ -24,6 +24,9 @@ if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
+" ================ ColorScheme ======================
+colorscheme desert
+
 " ================ Indentation ======================
 
 set autoindent

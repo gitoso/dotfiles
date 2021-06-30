@@ -1,0 +1,41 @@
+# [simple]
+# full_text=Teste
+# short_text=Teste
+# background=#FF0000
+# color=#FFFFFF
+# 
+# # Block with a fixed width
+# [aligned]
+# full_text=Here.
+# min_width=100
+# align=center
+# 
+# # Fancy text with multiple colors and shapes
+# [funky]
+# full_text=<span foreground="red" size="x-large">Roses</span> and <i><span color="#EE37B8">violets</span></i>!
+# markup=pango
+
+[cpu]
+command=echo  $(echo "100 - `mpstat | grep all | tr -s ' ' | cut -d' ' -f13 | cut -d'.' -f1`" | bc)%
+interval=1
+color=#eae2b7
+
+[ram]
+command=echo " `free -h | grep Mem | tr -s ' ' | cut -d' ' -f3 | cut -d'G' -f1`/`free -h | grep Mem | tr -s ' ' | cut -d' ' -f2`"
+interval=1
+color=#eae2b7
+
+# [cable]
+# command=echo "E: `ip a show enp2s0 | grep "inet\s" | tr -s ' ' | cut -d' ' -f3 | cut -d'/' -f1 && echo ---`"
+# interval=5
+# color=#eae2b7
+# 
+# [wifi]
+# command=echo "W: `ip a show wlp1s0 | grep "inet\s" | tr -s ' ' | cut -d' ' -f3 | cut -d'/' -f1 && echo ---`"
+# interval=5
+# color=#eae2b7
+
+[data]
+command=date +"%H:%M (%a %d/%m/%Y)"
+interval=1
+color=#eae2b7

@@ -45,5 +45,11 @@ lxpolkit &
 # Notification daemon
 systemctl --user start xfce4-notifyd
 
+# XsettingsD
+xsettingsd &
+
+# For QT and GTK harmonization
+QT_QPA_PLATFORMTHEME=qt5ct
+
 # Start i3-wm
 exec i3

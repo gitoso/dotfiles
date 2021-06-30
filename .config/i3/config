@@ -2,23 +2,23 @@
 # Startup Commands
 # ------------------------------------------------------------------------------
 exec_always --no-startup-id compton --config "$HOME/.config/compton/compton.conf"
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-#exec udiskie
-exec cbatticon
+exec udiskie
+#exec cbatticon
 exec nm-applet
 exec blueman-applet
 exec pasystray
-exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..."
-exec insync start
+exec xss-lock -- multilockscreen -l dimblur -t "You shall not pass..."
 exec flameshot
-#exec clipit
+exec xfce4-power-manager
 
 set $TERMINAL alacritty
+
 # ------------------------------------------------------------------------------
-# Dual Monitor Config
+# Dual Monitor Config (Nvidia Troubleshooting)
 # ------------------------------------------------------------------------------
-force_xinerama yes
+#force_xinerama yes
 
 
 # ------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # toggle mu
 
 # Actions
 bindsym $mod+x kill
-bindsym $mod+Control+l exec betterlockscreen -l dimblur -t "You shall not pass..."
+bindsym $mod+Control+l exec multilockscreen -l dimblur
 
 # Screenshots
 bindsym Print exec "scrot ~/Pictures/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
@@ -92,20 +92,21 @@ for_window [class="Blueman-manager"] floating enable
 for_window [title="Encryptr"] floating enable
 for_window [class="speedcrunch"] floating enable
 for_window [class="SpeedCrunch"] floating enable
-for_window [class="telegram-desktop"] floating enable
-for_window [class="TelegramDesktop"] floating enable
+#for_window [class="telegram-desktop"] floating enable
+#for_window [class="TelegramDesktop"] floating enable
 # Matlab Figures
 for_window [title="Figure *"] floating enable
+for_window [class="gvim"] floating enable
+for_window [class="Gvim"] floating enable
 
 # ------------------------------------------------------------------------------
 # Scratchpad config
 # ------------------------------------------------------------------------------
-
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+grave move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym $mod+grave scratchpad show
 
 # ------------------------------------------------------------------------------
 # Workspace App Assignment
@@ -148,7 +149,7 @@ bindsym $mod+minus scratchpad show
 # ------------------------------------------------------------------------------
 font pango:monospace 8
 
-# ------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # Behavior
 # ------------------------------------------------------------------------------
 #workspace_auto_back_and_forth yes
@@ -161,18 +162,26 @@ hide_edge_borders smart
 # ------------------------------------------------------------------------------
 # Bar
 # ------------------------------------------------------------------------------
-#bar {
-#	strip_workspace_numbers yes
-#	position bottom
-#       status_command i3status
-#        tray_padding 2
-#        separator_symbol " | "
-#        font pango: Hack 9
-#	colors {
-#		#background #2F343F
-#		active_workspace #333333 #5f676a #ffffff
-#	}
-#}
+bar {
+  strip_workspace_numbers yes
+  position top
+  status_command i3blocks
+  tray_padding 2
+  tray_output primary
+  separator_symbol " | "
+  font pango:Fira Mono 10
+  colors {
+    background #282828
+    statusline #FFFFFF
+    separator  #FFFFFF
+
+    focused_workspace  #FFFFFF #005f73 #FFFFFF
+    active_workspace   #333333 #222222 #FFFFFF
+    inactive_workspace #333333 #222222 #888888
+    urgent_workspace   #2F343A #ae2012 #FFFFFF
+    binding_mode       #2F343A #ae2012 #FFFFFF
+  }
+}
 
 
 # ------------------------------------------------------------------------------
@@ -186,7 +195,8 @@ bindsym $mod+Return exec $terminal
 
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show drun -show-icons
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus

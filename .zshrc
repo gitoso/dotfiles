@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export PATH=$PATH:/home/gitoso/.cargo/bin
+# Path config
+export PATH=$PATH:$HOME/.i3-layouts
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/gitoso/.oh-my-zsh"
@@ -10,10 +11,10 @@ export ZSH="/home/gitoso/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="amuse"
 
 if [ `tput colors` != "256" ]; then
-	ZSH_THEME="michelebologna"
+    ZSH_THEME="dst"
 fi
 
 # Set list of themes to pick from when loading at random
@@ -39,7 +40,7 @@ fi
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -51,6 +52,8 @@ fi
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -104,5 +107,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Aliases
+alias ssh="export TERM=xterm; ssh"
+alias clip="xclip -sel clip <<<"
+alias clipf="xclip -sel clip <"
+alias rg="rg --hidden"
+
+# Source Files
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/nvm/init-nvm.sh
+
+export CTF=/home/gitoso/Projects/CTF-BTG
+export SHARED=/home/gitoso/VirtualBox\ VMs/SHARED
