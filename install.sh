@@ -44,6 +44,19 @@ else
 fi
 ln -s `pwd`/.config/compton/compton.conf ~/.config/compton/compton.conf
 
+# ranger ==========================================================
+if [ -f "$HOME/.config/ranger/rc.conf.original" ]; then
+    rm -f ~/.config/ranger/rc.conf.bkp
+    mv ~/.config/ranger/rc.conf ~/.config/ranger/rc.conf.bkp
+else
+    if [ -f "$HOME/.config/ranger/rc.conf" ]; then
+        mv ~/.config/ranger/rc.conf ~/.config/ranger/rc.conf.original
+    else
+        mkdir ~/.config/ranger/ 2>/dev/null
+    fi
+fi
+ln -s `pwd`/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+
 # zoom ================================================================
 if [ -f "$HOME/.config/zoomus.conf.original" ]; then
     rm -f ~/.config/zoomus.conf.bkp

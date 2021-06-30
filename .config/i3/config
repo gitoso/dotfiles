@@ -40,6 +40,11 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# For Akko Keyboard (custom shortcuts)
+bindsym XF86HomePage exec pamixer -i 10
+bindsym XF86Search exec pamixer -d 10
+bindsym XF86Mail exec pamixer -t
+
 # Volume
 bindsym XF86AudioRaiseVolume exec pamixer -i 10
 bindsym XF86AudioLowerVolume exec pamixer -d 10
@@ -50,7 +55,7 @@ bindsym $mod+x kill
 bindsym $mod+Control+l exec multilockscreen -l dimblur
 
 # Screenshots
-bindsym Print exec "scrot ~/Pictures/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
+bindsym Print exec "scrot ~/Images/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
 
 # ------------------------------------------------------------------------------
 # Gaps Config
