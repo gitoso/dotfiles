@@ -43,7 +43,7 @@ export EDITOR="$VISUAL"
 lxpolkit &
 
 # Notification daemon
-systemctl --user start xfce4-notifyd
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 # XsettingsD
 xsettingsd &

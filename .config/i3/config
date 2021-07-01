@@ -41,21 +41,21 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # For Akko Keyboard (custom shortcuts)
-bindsym XF86HomePage exec pamixer -i 10
-bindsym XF86Search exec pamixer -d 10
-bindsym XF86Mail exec pamixer -t
+bindsym XF86HomePage exec pamixer -i 10 && notify-send -t 1000 "Volume: `pamixer --get-volume`%"
+bindsym XF86Search exec pamixer -d 10 && notify-send -t 1000 "Volume: `pamixer --get-volume`%"
+bindsym XF86Mail exec pamixer -t && notify-send -t 1000 "Mute: `pamixer --get-mute`"
 
 # Volume
-bindsym XF86AudioRaiseVolume exec pamixer -i 10
-bindsym XF86AudioLowerVolume exec pamixer -d 10
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # toggle mute for default device
+bindsym XF86AudioRaiseVolume exec pamixer -i 10 && notify-send -t 1000 "Volume: `pamixer --get-volume`%"
+bindsym XF86AudioLowerVolume exec pamixer -d 10 && notify-send -t 1000 "Volume: `pamixer --get-volume`%"
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && notify-send -t 1000 "Mute: `pamixer --get-mute`" # toggle mute for default device
 
 # Actions
 bindsym $mod+x kill
 bindsym $mod+Control+l exec multilockscreen -l dimblur
 
 # Screenshots
-bindsym Print exec "scrot ~/Images/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
+bindsym Print exec scrot -s -b ~/Images/screenshots/scrot-%Y-%m-%d%H:%M:%S.png && notify-send -t 3000 "Screenshot taken"
 
 # ------------------------------------------------------------------------------
 # Gaps Config
@@ -63,7 +63,7 @@ bindsym Print exec "scrot ~/Images/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
 new_window 1pixel
 gaps inner 7
 gaps outer 1
-#smart_gaps on
+smart_gaps on
 
 # ------------------------------------------------------------------------------
 # Wallpaper Config
@@ -97,12 +97,13 @@ for_window [class="Blueman-manager"] floating enable
 for_window [title="Encryptr"] floating enable
 for_window [class="speedcrunch"] floating enable
 for_window [class="SpeedCrunch"] floating enable
+for_window [class="Gvim"] floating enable
+for_window [class="gvim"] floating enable
 #for_window [class="telegram-desktop"] floating enable
 #for_window [class="TelegramDesktop"] floating enable
+
 # Matlab Figures
 for_window [title="Figure *"] floating enable
-for_window [class="gvim"] floating enable
-for_window [class="Gvim"] floating enable
 
 # ------------------------------------------------------------------------------
 # Scratchpad config
